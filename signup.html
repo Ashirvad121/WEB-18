@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body > div:nth-child(1){
+            width: 100%;
+            height: 50px;
+            /* border: 1px solid red; */
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+        b{
+            font-size: 22px;
+            margin: auto;
+            margin-left: 260px;
+        }
+        body > div:nth-child(2){
+            width: 40%;
+            height: 500px;
+            /* border: 1px solid red; */
+            margin: auto;
+            margin-top: 50px;
+        }
+        input{
+            width: 90%;
+            height: 30px;
+            margin-top: -30px;
+        }
+        p{
+            margin-bottom: 0px;
+            margin-top: 20px;
+        }
+        #submit{
+            margin-top: 50px;
+            background-color: blue;
+            color: white;
+        }
+        
+    </style>
+</head>
+<body>
+    <div><img src="https://sso.masaischool.com/brand_dark.svg" alt="a"></div>
+    <div>
+        <form action="">
+            <b>Sign Up</b>
+            <p>Phone number</p><br>
+            <input id="name" type="number">
+            <p>Email</p><br>
+            <input id="email" type="email">
+            <p>Password</p><br>
+            <input id="password" type="password">
+            <input id="submit" type="submit" value="Sign Up">
+            <!-- <p>Already have an account?<a href="">Log In</a></p> -->
+        </form>
+    </div>
+</body>
+</html>
+<script>
+    document.querySelector("form").addEventListener("submit",myfunction);
+    var arr = JSON.parse(localStorage.getItem("signupdetail")) || [];
+    function myfunction()
+    {
+        event.preventDefault();
+        var obj ={
+            name : document.querySelector("#name").value,
+            email : document.querySelector("#email").value,
+            password : document.querySelector("#password").value
+        }
+        arr.push(obj);
+        localStorage.setItem("signupdetail",JSON.stringify(arr));
+        console.log(arr);
+        window.location.href = "login.html";
+    }
+    
+</script>
