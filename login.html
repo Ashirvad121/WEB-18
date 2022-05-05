@@ -46,7 +46,7 @@
 <body>
     <div><img src="https://sso.masaischool.com/brand_dark.svg" alt="a"></div>
     <div>
-        <form action="">
+        <form id="form" action="">
             <b>Log In</b>
             <!-- <p>Phone number</p><br> -->
             <!-- <input id="name" type="number"> -->
@@ -62,22 +62,27 @@
 </html>
 <script>
     document.querySelector("form").addEventListener("submit",myfunction);
-    var arr = JSON.parse(localStorage.getItem("signupdetail"));
-    function myfunction(arr)
+    var userData = JSON.parse(localStorage.getItem("signupdetail"));
+    function myfunction()
     {
-        event.preventDefault();
-        console.log(arr);
-        arr.forEach(function(el){
-            var lastemail = el.email;
-            var lastpassword = el.password;
-            console.log(lastemail,lastpassword)
-            var email = document.querySelector("#email").value;
-            var password = document.querySelector("#password").value;
-            if(email == lastemail && password == lastpassword){
-                alert("Login Successful");
-            }else{
-                alert("Wrong Information")
-            }
-        })
+       event.preventDefault();
+       var data ={
+           email : form.email.value,
+           pass : form.password.value,
+       }
+       console.log(data);
+       console.log(userData);
+      check(userData,data);
+    }
+    function check(userData,data)
+    {
+        if(userData === null)
+       {
+           alert("Create an account");
+       }else if(userData.email == data.email && userData.password == data.password){
+           alert("Sign In Successful");
+       }else if(userData.email != data.email || userData.email != data.email){
+           alert("Wrong Information");
+       }
     }
 </script>

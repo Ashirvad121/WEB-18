@@ -62,18 +62,17 @@
 </html>
 <script>
     document.querySelector("form").addEventListener("submit",myfunction);
-    var arr = JSON.parse(localStorage.getItem("signupdetail")) || [];
     function myfunction()
     {
         event.preventDefault();
-        var obj ={
+        var userData ={
             name : document.querySelector("#name").value,
             email : document.querySelector("#email").value,
             password : document.querySelector("#password").value
         }
-        arr.push(obj);
-        localStorage.setItem("signupdetail",JSON.stringify(arr));
-        console.log(arr);
+        
+        localStorage.setItem("signupdetail",JSON.stringify(userData));
+        console.log(userData);
         window.location.href = "login.html";
     }
     
